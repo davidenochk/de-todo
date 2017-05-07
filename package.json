@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidenochk/davidenoch.git"
+  },
   "author": "davidenochk",
   "license": "ISC",
   "dependencies": {
@@ -16,5 +20,9 @@
     "mongoose": "^4.4.20",
     "morgan": "^1.7.0",
     "q": "^1.4.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/davidenochk/davidenoch/issues"
+  },
+  "homepage": "https://github.com/davidenochk/davidenoch#readme"
 }
