@@ -1,0 +1,25 @@
+<div class="todo mat-elevation-z1" [class.deleting]="todo?.deleting" (dblclick)="onDoubleClick()" [class.moving]="todo?.moving" fxLayout="column" fxLayoutAlign="start space-between">
+  <div class="md-text title" *ngIf="IsView()">{{todo?.title}}</div>
+  <input type="text" *ngIf="IsEdit()" [(ngModel)]="todo.title" name="title" placeholder="Title">
+  <div class="divider" *ngIf="IsView()"></div>
+  <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div *ngIf="IsView()" class="description icon-text" fxFlex="100">
+      <span class="text" [innerHTML]="todo?.description"></span>
+    </div>
+    <textarea style="font-size: 0.9rem" type="text" *ngIf="IsEdit()" [(ngModel)]="todo.description" name="description" placeholder="Description"></textarea>
+    <div *ngIf="IsView()" class="state" (click)="done()" [ngClass]="{'done':todo?.status == completed()}">
+      <md-icon>check</md-icon>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="username" fxLayout="row" fxLayoutAlign="end center">
+      <md-icon>person</md-icon>
+      <span class="text">{{todo?.author?.username}}</span>
+    </div>
+    <md-icon class="action" *ngIf="IsEdit()" (click)="onClickSaveTodo(todo)" color="accent">save</md-icon>
+    <md-icon class="action" (click)="onClickDeleteTodo(todo)" color="accent">delete</md-icon>
+  </div>
+  <div class="completed" *ngIf="todo?.status == completed()" fxLayout="row" fxLayoutFill fxLayoutAlign="center center">
+    <md-icon>check</md-icon>
+  </div>
+</div>

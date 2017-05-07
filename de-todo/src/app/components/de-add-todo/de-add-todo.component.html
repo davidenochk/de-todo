@@ -1,0 +1,11 @@
+<div class="todo-add" fxLayout="column" fxLayoutAlign="start space-around">
+  <md-input-container fxFlex floatPlaceholder="never">
+    <input class="lg" mdInput type="text" focused [(ngModel)]="todo.title" placeholder="What to do?">
+  </md-input-container>
+  <md-input-container fxFlex style="margin-top: 20px;">
+    <textarea mdInput [(ngModel)]="todo.description" placeholder="Description"></textarea>
+  </md-input-container>
+</div>
+<div fxLayout="row" style="margin-top: 20px;" fxLayoutAlign="center center">
+  <button md-fab (click)="addTodo()"><md-icon>check</md-icon></button>
+</div>

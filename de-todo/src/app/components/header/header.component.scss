@@ -1,0 +1,56 @@
+@import '../../../styles/variables';
+
+$header-height: 40px;
+
+:host() {
+    width: 100%;
+}
+.header {
+    //width: 90%;
+    //margin: 0 auto;
+    //border-radius: 0 0 3px 3px;
+    //min-height: $header-height;
+    //height: $header-height;
+    &-username {
+        font-size: 1rem;
+        font-weight: 400;
+        margin-right: 10px;
+        display: inline-block;
+        position: relative;
+        top: -5px;
+    }
+
+    &-logo {
+        flex-grow: 1;
+        img {
+            height: $nav-bar-width - 10px;
+        }
+    }
+    .mat-toolbar .mat-toolbar-row {
+        //height: $header-height;
+    }
+
+    &-app-title {
+        flex-grow: 1;
+        font-size: 1rem;
+    }
+}
+
+.topbar {
+    &-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+}
+.page {
+    &-title{
+        //font-size: 20px;
+        //margin: 10px;
+    }
+    &-header {
+        //height: 85px;
+    }
+}

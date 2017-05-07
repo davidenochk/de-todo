@@ -1,0 +1,41 @@
+<div class="login" fxLayout="row" fxLayoutAlign="center center" fxFlexFill>
+  <form class="login-form" novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <md-card class="login-form-card">
+      <md-card-title>
+        <md-icon class="icon--lg user-icon">account_circle</md-icon>
+        <div class="login-form-title">Sign In</div>
+      </md-card-title>
+      <md-card-content fxLayout="column">
+        <md-input-container fxFlex="100">
+          <input mdInput placeholder="Username" type="text" #username="ngModel" name="username" [(ngModel)]="account.username" required="true"
+          />
+          <md-hint align="end" *ngIf="f.controls.username?.errors?.required && (username.dirty || username.touched)" class="error-validation">
+            Username is required
+          </md-hint>
+        </md-input-container>
+        <md-input-container fxFlex="100">
+          <input mdInput placeholder="Password" type="password" #password="ngModel" name="password" [(ngModel)]="account.password"
+            required="true" />
+          <md-hint align="end" *ngIf="f.controls.password?.errors?.required && (password.touched || password.dirty)" class="error-validation">
+            Password is required</md-hint>
+        </md-input-container>
+      </md-card-content>
+      <md-card-actions>
+        <div fxLayout="row" fxLayoutAlign="center" style="margin-bottom: 20px">
+          <button md-fab mdTooltip="Sign In" mdTooltipPosition="after" [disabled]="f.invalid" type="submit">
+          <md-icon>check</md-icon></button>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <a md-button color="primary">Forgot Password</a>
+          <div fxLayout="row" fxLayoutAlign="end space-between">
+            <span class="md-line">Not a user yet?</span>
+            <a md-button color="accent">Sign Up</a>
+          </div>
+        </div>
+      </md-card-actions>
+      <md-card-footer fxLayout="column" fxLayoutAlign="center" *ngIf="error">
+        <span *ngIf="error" class="error-form">{{error.message}}</span>
+      </md-card-footer>
+    </md-card>
+  </form>
+</div>

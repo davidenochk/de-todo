@@ -1,0 +1,90 @@
+@import '../../../styles/variables';
+
+.todo-add{
+    width: 600px;
+    border: $border;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: $gray;
+    margin: 0 auto;
+    position: relative;
+    .select-card {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+    }
+}
+.icon-text{
+    cursor: pointer;
+    position: relative;
+    .text {
+        font-size: 1rem;
+        line-height: calc(1rem + 2px);
+        position: relative;
+        top: -0.2rem;
+    }
+    md-icon{
+        font-size: 1.1rem;
+        line-height: 1.1rem;
+        height: 1.1rem;
+        width: 1.1rem;
+        margin-right: 0;
+    }
+    &:hover{
+        .text, md-icon{
+            color: $hover-color;
+        }
+    }
+}
+.divider{
+    margin: 5px 0 10px 0;
+    border-bottom: $border;
+    height: 1px;
+    width: 100%;
+}
+.status {
+    font-weight: $bold;
+    .text{
+        font-size: 1.2rem;
+    }
+    .text::before{
+        content:'%';
+    }
+}
+.priority{
+    .symbol{  
+        font-weight: $bold;
+        font-size: 1rem;
+        margin-bottom: 1px;
+        margin-right: 3px;
+        display: block;
+    }
+    &:hover{
+        color: $hover-color;
+    }
+}
+.description input{
+    display: block;
+}
+.container-click-open {
+    border: $border;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    z-index: 1;
+}
+.fw-date{
+    width: 130px;
+    border: none;
+    border-bottom: $border;
+    outline: none;
+    font-family: $font-family-condensed;
+    color: $hover-color;
+    position: relative;
+    font-size: 16px;
+    top: -5px;
+}

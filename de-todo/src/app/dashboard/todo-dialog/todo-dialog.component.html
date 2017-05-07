@@ -1,0 +1,12 @@
+<div md-dialog-title fxLayout="row" fxLayoutAlign="space-around center">
+  <span class="title" fxFlex>Add Todo</span>
+  <button (click)="cancel()" color="primary" md-icon-button>
+    <md-icon>close</md-icon>
+  </button>
+</div>
+<div md-dialog-content style="padding-bottom: 20px">
+  <de-add-todo (addedTodo)="addedTodo($event)" [todo]="todo"></de-add-todo>
+</div>
+<div md-dialog-footer *ngIf="this.error?.message">
+  {{this.error?.message}}
+</div>

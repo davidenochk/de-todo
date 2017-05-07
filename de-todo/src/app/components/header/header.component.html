@@ -1,0 +1,10 @@
+<div *ngIf="account?.isLoggedIn">
+  <md-toolbar color="primary" class="header">
+    <span class="header-app-title">
+      {{appTitle}}
+    </span>
+    <button type="button" md-icon-button (click)="onClickSignOut()">
+      <md-icon>power_settings_new</md-icon>
+    </button>
+  </md-toolbar>
+</div>

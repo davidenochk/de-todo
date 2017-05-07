@@ -1,0 +1,102 @@
+<button (click)="onClickAddTodo()" class="page-action" md-mini-fab>
+    <md-icon>add</md-icon>
+</button>
+<div class="page-title">Dashboard</div>
+<div fxLayout.xs="column" fxLayoutAlign.xs="start start" fxLayout.gt-xs="row" fxLayoutAlign.gt-xs="space-around start">
+    <div class="mat-elevation-z1 pending" 
+        fxFlex.xs="100" 
+        fxFlex.sm="75" 
+        fxFlex.gt-sm="75"
+        fxLayout="row" 
+        fxLayoutWrap
+        fxLayoutAlign="start start" 
+        (dragover)="allowDrop($event, 'notCompleted')" 
+        (drop)="drop($event, 'notCompleted')">
+        <div class="heading" 
+            fxLayout="row" 
+            fxLayoutAlign="space-around center" 
+            fxFlex="100">
+            <div class="title">In Progress</div>
+        </div>
+        <div class="no" 
+            fxFlex="100" 
+            *ngIf="todos && (todos | status : notCompleted()).length == 0" 
+            fxLayout="row" 
+            fxLayoutAlign="center center">
+            <md-icon style="margin-right: 10px;" color="accent">check_circle</md-icon>All completed!
+        </div>
+        <div
+            fxFlex="100"
+            class="dropHere"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            *ngIf="dropNotCompleted"
+            >
+            <div>Drop Here</div>
+        </div>
+        <app-todo 
+            id="{{todo._id}}" 
+            draggable="true" 
+            (dragstart)="dragNC($event)"
+            (dragend)="dragEnd($event)"
+            (deleteTodo)="deleteTodo($event)"
+            (doneTodo)="doneTodo($event)"
+            (saveTodo)="updateTodo($event)"
+            fxFlex.xs="100" 
+            fxFlex.sm="50" 
+            fxFlex.md="33" 
+            fxFlex.gt-md="25" 
+            [todo]="todo" 
+            *ngFor="let todo of todos | status : 'notCompleted'"></app-todo>
+        <div class="loadmore" fxLayout="row" *ngIf="showLoadMore" fxFlex="100" fxLayoutAlign="center center">
+            <button md-button color="accent" (click)="loadMore()">
+                <md-icon>refresh</md-icon>Load More...
+            </button>
+        </div>
+    </div>
+    <div class="mat-elevation-z1 completed" 
+        fxFlex.xs="100" 
+        fxFlex.sm="25" 
+        fxFlex.gt-sm="25" 
+        fxLayout="row" 
+        fxLayoutWrap
+        fxLayoutAlign="start start" 
+        (dragover)="allowDrop($event, 'completed')"
+        (drop)="drop($event, 'completed')"
+        draggable="true" 
+        id="completed">
+        <div
+            fxFlex="100"
+            class="dropHere"
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            *ngIf="dropCompleted"
+            >
+            <div>Drop Here</div>
+        </div>
+        <div class="heading" 
+            fxLayout="row" 
+            fxLayoutAlign="space-around center" 
+            fxFlex="100">
+            <div class="title">Completed</div>
+        </div>
+        <div class="no" 
+            fxFlex="100" 
+            *ngIf="todos && (todos | status : completed()).length == 0" 
+            fxLayout="row" 
+            fxLayoutAlign="center center">
+            <md-icon style="margin-right: 10px;" color="accent">highlight_off</md-icon>None completed!
+        </div>
+        <app-todo id="{{todo._id}}" 
+            draggable="true" 
+            (dragstart)="dragC($event)"
+            (dragend)="dragEnd($event)"
+            (deleteTodo)="deleteTodo($event)"
+            fxFlex.xs="100" 
+            fxFlex.sm="100" 
+            fxFlex.md="100" 
+            fxFlex.gt-md="50" 
+            [todo]="todo" 
+            *ngFor="let todo of todos | status : 'completed'"></app-todo>
+    </div>
+</div>

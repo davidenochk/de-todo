@@ -1,0 +1,103 @@
+@import '../../../styles/variables';
+
+$border: 1px solid rgba(0, 0, 0, 0.1);
+$dark-gray: rgba(0, 0, 0, 0.7);
+$gray: rgba(0, 0, 0, 0.5);
+$light-gray: rgba(0, 0, 0, 0.3);
+$hover-color: rgba(0, 0, 0, 0.5);
+$bold: 600;
+$green: #41CC6A;
+
+:host() {
+    width: 100%;
+}
+.todo{
+    width: auto;  
+    border: $border;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: $light-gray;
+    position: relative;
+    margin: 5px;
+    animation-name: scale-rotate;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+    // &:hover{
+    //     transform: scale(1.02) rotate(-0.5deg);
+    //     animation-name:scale-rotate;
+    //     animation-duration: 0.5s;
+    // }
+    .title{
+        font-size: 1rem;
+        color: $primary-color;
+    }
+    .select-card {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+    }
+    .divider{
+        margin: 5px 0 10px 0;
+        border-bottom: $border;
+        height: 1px;
+        width: 100%;
+    }
+    .state {
+        cursor: pointer;
+        position: relative;
+        top: -8px;
+        md-icon {
+            font-size: 2rem;
+            height: 2rem;
+            width: 2rem;
+            display: block;
+            margin-right: -4px;
+            margin-top: 4px;
+        }
+    }
+    .username{
+        color: $gray;
+        md-icon{
+            font-size: 1rem;
+            height: 1rem;
+            width: 1rem;
+            display: block;
+        }
+    }
+    .text {
+        font-size: 0.9rem;
+        color: $gray;
+    }
+    .done{
+        display: none;
+    }
+    .completed{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        color: rgba(0, 255, 0, 0.15);
+        left: 0;
+        z-index: -1;
+        md-icon{
+            font-size: 7rem;
+            height: 7rem;
+            width: 7rem;
+            line-height: 7rem;
+        }
+    }
+}
+.moving{
+    animation-name: shake;
+    animation-duration: 0.2s;
+}
+.deleting{
+    animation-name: delete;
+    animation-duration: 1s;
+    animation-direction: normal;
+}
+@keyframes delete{
+    from{transform:scale(1) rotateY(0deg); opacity:1}
+    50%{opacity:0}
+    to{transform:scale(3) rotateY(1800deg);opacity:0}
+}
